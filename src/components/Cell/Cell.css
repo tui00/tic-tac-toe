@@ -1,0 +1,48 @@
+.cell {
+  width: 100px;
+  height: 100px;
+  font-size: 48px;
+  color: black;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #f0f0f0;
+}
+
+.cell:focus {
+  outline: none;
+}
+
+.cell.win {
+  animation: win .5s ease-in-out forwards;
+}
+.cell.draw {
+  animation: draw .5s ease-in-out forwards;
+}
+
+@keyframes win {
+  100% {
+    background-color: #007bff;
+  }
+}
+
+@keyframes draw {
+  100% {
+    background-color: #ff0000;
+  }
+}
+
+@media (max-width: 480px) {
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+}
