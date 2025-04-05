@@ -17,8 +17,7 @@ function checkWinner(currentBoard) {
         winners.push(a, b, c)
       }
     }
-    console.log(winners.length != 0 ? winners : null);
-    return winners.length != 0 ? winners : null;
+    return winners;
 }
 
 export default checkWinner;

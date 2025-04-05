@@ -1,5 +1,5 @@
 import Cell from './Cell'
-import { CELL_STATUS } from '../utils/useGame'
+import CELL_STATUS from '../statuses'
 import PropTypes from 'prop-types'
 import './styles/Board.css'
 

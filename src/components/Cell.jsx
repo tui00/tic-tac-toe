@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import './styles/Cell.css';
+import CELL_STATUS from '../statuses';
 
 function Cell({ onClick, value, status }) {
   return (
-    <button className={`cell ${status == 1 ? 'win' : status == 2 ? 'draw' : ''}`} onClick={onClick}>
+    <button className={`cell ${status == CELL_STATUS.WINNING ? 'win' : status == CELL_STATUS.DRAW ? 'draw' : ''}`} onClick={onClick}>
       {value}
     </button>
   )

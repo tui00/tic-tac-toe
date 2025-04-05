@@ -1,41 +1,34 @@
 import { useState } from 'react';
 import checkWinner from './checkWinner';
 
-export const CELL_STATUS = {
-  EMPTY: 0,
-  WINNING: 1,
-  DRAW: 2
-};
-
 export function useGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [winners, setWinners] = useState(null);
+  const [winners, setWinners] = useState([]);
   const [draw, setDraw] = useState(false);
 
   const handleClick = (buttonNumber) => {
-    if (board[buttonNumber] || winners) {
+    if (board[buttonNumber] || winners.length !== 0) {
       return;
     }
     const newBoard = [...board];
     newBoard[buttonNumber] = isXNext ? 'X' : 'O';
     setBoard(newBoard);
-    setWinners(checkWinner(newBoard));
-    if (newBoard.every(cell => cell) && winners === null) {
-      setDraw(true);
-    }
+    const newWinners = checkWinner(newBoard);
+    setWinners(newWinners);
+    setDraw(newBoard.every(cell => cell) && newWinners.length === 0);
     setIsXNext(!isXNext);
   };
 
   const handleReset = () => {
     setBoard(Array(9).fill(null));
-    setWinners(null);
+    setWinners([]);
     setIsXNext(true);
     setDraw(false);
   };
 
   const getStatusMessage = () => {
-    if (winners) return `Победитель: ${board[winners[0]]}.`;
+    if (winners.length !== 0) return `Победитель: ${board[winners[0]]}.`;
     if (draw) return 'Ничья.';
     return `Ход: ${isXNext ? 'X' : 'O'}.`;
   };
