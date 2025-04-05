@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './Cell.css';
+import './styles/Cell.css';
 
 function Cell({ onClick, value, status }) {
   return (

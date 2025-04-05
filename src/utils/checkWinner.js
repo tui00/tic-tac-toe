@@ -9,13 +9,16 @@ function checkWinner(currentBoard) {
       [0, 4, 8],
       [2, 4, 6]
     ]
-    
+
+    const winners = [];
+
     for (const [a, b, c] of lines) {
       if (currentBoard[a] && currentBoard[a] === currentBoard[b] && currentBoard[a] === currentBoard[c]) {
-        return [a, b, c]
+        winners.push(a, b, c)
       }
     }
-    return null
+    console.log(winners.length != 0 ? winners : null);
+    return winners.length != 0 ? winners : null;
 }
 
 export default checkWinner;

@@ -10,18 +10,18 @@ export const CELL_STATUS = {
 export function useGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [winner, setWinner] = useState(null);
+  const [winners, setWinners] = useState(null);
   const [draw, setDraw] = useState(false);
 
   const handleClick = (buttonNumber) => {
-    if (board[buttonNumber] || winner) {
+    if (board[buttonNumber] || winners) {
       return;
     }
     const newBoard = [...board];
     newBoard[buttonNumber] = isXNext ? 'X' : 'O';
     setBoard(newBoard);
-    setWinner(checkWinner(newBoard));
-    if (newBoard.every(cell => cell) && winner == null) {
+    setWinners(checkWinner(newBoard));
+    if (newBoard.every(cell => cell) && winners === null) {
       setDraw(true);
     }
     setIsXNext(!isXNext);
@@ -29,20 +29,20 @@ export function useGame() {
 
   const handleReset = () => {
     setBoard(Array(9).fill(null));
-    setWinner(null);
+    setWinners(null);
     setIsXNext(true);
     setDraw(false);
   };
 
   const getStatusMessage = () => {
-    if (winner) return `Победитель: ${board[winner[0]]}.`;
+    if (winners) return `Победитель: ${board[winners[0]]}.`;
     if (draw) return 'Ничья.';
     return `Ход: ${isXNext ? 'X' : 'O'}.`;
   };
 
   return {
     board,
-    winner,
+    winners,
     draw,
     isXNext,
     handleClick,

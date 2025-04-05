@@ -1,11 +1,11 @@
-import './App.css'
-import Board from './components/Board/Board'
+import './styles/App.css'
+import Board from './components/Board'
 import { useGame } from './utils/useGame'
 
 export default function App() {
   const {
     board,
-    winner,
+    winners: winner,
     draw,
     handleClick,
     handleReset,

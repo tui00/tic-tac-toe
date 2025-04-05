@@ -1,7 +1,7 @@
-import Cell from '../Cell/Cell'
-import { CELL_STATUS } from '../../utils/useGame'
+import Cell from './Cell'
+import { CELL_STATUS } from '../utils/useGame'
 import PropTypes from 'prop-types'
-import './Board.css'
+import './styles/Board.css'
 
 function Board({ board, winner, draw, onCellClick }) {
     return (
